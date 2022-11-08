@@ -29,6 +29,9 @@ if subset:
     mask_lon = (ds_main.lon >= min_lon) & (ds_main.lon <= max_lon)
     mask_lat = (ds_main.lat >= min_lat) & (ds_main.lat <= max_lat)
     ds = ds_main.where(mask_lon & mask_lat, drop=True)
+    # Date filter
+
+    ds = ds.sel(time1=slice("2022-05-01", "2022-05-02"))
     del ds_main
 else:
     ds = ds_main
